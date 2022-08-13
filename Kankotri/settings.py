@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-tmvlhzz5@p+x0@0%*7n&n@$!_aq0yn&5pdhcp+!2cdr*g3f76s
 # DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'shrutiwedshardik.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['localhost', '127.0.0.1', 'shrutiwedshardik.azurewebsites.net']
 
 # Application definition
 FILE_UPLOAD_HANDLERS = ['django.core.files.uploadhandler.TemporaryFileUploadHandler']
