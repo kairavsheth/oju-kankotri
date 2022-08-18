@@ -1,7 +1,14 @@
 {% extends 'admin/change_list.html' %}
 
 {% block object-tools %}
-    <a href="import/">Import</a>
-    <br />
-    {{ block.super }}
+    <ul class="object-tools">
+        <li>
+            <a class="addlink" href="import/">Import</a>
+        </li>
+        <li>
+            <a href="/admin/contacts/contact/add/" class="addlink">
+                Add contact
+            </a>
+        </li>
+    </ul>
 {% endblock %}

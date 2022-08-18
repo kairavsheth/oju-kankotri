@@ -1,11 +1,11 @@
 from django.contrib import admin
 
 from Kankotri.utils import FilterUserAdmin
-from guests.models import Event, Family, Person, Invitations, Group
+from guests.models import Event, Family, Person, Invitation, Group
 
 
 class InvitationsInline(admin.StackedInline):
-    model = Invitations
+    model = Invitation
     fields = ('event', 'expected')
 
 

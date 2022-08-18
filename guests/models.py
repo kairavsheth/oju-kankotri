@@ -37,7 +37,7 @@ class Person(models.Model):
     title = models.IntegerField(choices=((0, ''), (1, 'Mr.'), (2, 'Mrs.'), (3, 'Family')))
     senior = models.BooleanField('Senior for Shri/Smt')
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    name = models.CharField(max_length=32)
+    name = models.CharField(max_length=128)
     phone = models.BigIntegerField(null=True, blank=True)
     sender = models.ForeignKey('contacts.Sender', on_delete=models.CASCADE)
 
@@ -45,7 +45,7 @@ class Person(models.Model):
         return self.name
 
 
-class Invitations(models.Model):
+class Invitation(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='invitations')
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     expected = models.BooleanField()

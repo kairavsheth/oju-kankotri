@@ -1,3 +1,4 @@
 Django>=4.1
 psycopg2
 whitenoise
+vobject>=0.9.6.1
