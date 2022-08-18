@@ -50,5 +50,8 @@ class Invitation(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     expected = models.BooleanField()
 
+    def __str__(self):
+        return ''
+
     class Meta:
         unique_together = ['person', 'event']

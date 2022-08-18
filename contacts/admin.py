@@ -12,6 +12,22 @@ from contacts.models import Contact, Sender, User
 from guests.models import Person
 
 
+class PersonInline(admin.TabularInline):
+    exclude = ('side',)
+    fields = ('title', 'senior', 'name', 'group', 'phone',)
+    model = Person
+    show_change_link = True
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
 @admin.register(User)
 class MyUserAdmin(UserAdmin):
     pass
@@ -20,6 +36,7 @@ class MyUserAdmin(UserAdmin):
 @admin.register(Sender)
 class SenderAdmin(FilterUserAdmin):
     fields = ('name',)
+    inlines = (PersonInline,)
 
 
 def ImportForm(issuperuser):
@@ -45,7 +62,7 @@ class ContactAdmin(FilterUserAdmin):
     def added(self, instance):
         try:
             person = Person.objects.filter(phone=instance.phone).all()[0]
-            return mark_safe(f'<a href="/admin/guests/person/{person.id}/">{person}</a>')
+            return mark_safe(f'<a href="/admin/guests/person/{person.id}/">{person.name} by {person.sender.name}</a>')
         except IndexError:
             return mark_safe(f'<a href="/admin/guests/person/add/?name={instance.name}&phone={instance.phone}">Add</a>')
 

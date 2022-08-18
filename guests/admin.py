@@ -9,6 +9,15 @@ class InvitationsInline(admin.StackedInline):
     fields = ('event', 'expected')
 
 
+class InvitationsInline2(admin.TabularInline):
+    model = Invitation
+    fields = ('person', 'event', 'expected')
+    readonly_fields = ('person',)
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
 class PersonInline(admin.StackedInline):
     exclude = ('side',)
     model = Person
@@ -42,6 +51,7 @@ class GroupInline(admin.StackedInline):
 @admin.register(Event)
 class EventAdmin(FilterUserAdmin):
     fields = ('name', 'date', 'venue', 'location')
+    inlines = (InvitationsInline2,)
 
 
 @admin.register(Family)
