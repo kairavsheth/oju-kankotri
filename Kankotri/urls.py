@@ -13,10 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.template.defaulttags import url
 from django.urls import path, include
 
+from Kankotri import settings
+from guests.views import invite, error
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('<int:family_id>/', invite, name='english'),
+    path('<int:family_id>/g', invite, name='gujarati'),
 ]
+
+handler404 = handler403 = handler400 = handler500 = error

@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from Kankotri.utils import FilterUserAdmin
 from guests.models import Event, Family, Person, Invitation, Group
 
 
@@ -19,7 +18,6 @@ class InvitationsInline2(admin.TabularInline):
 
 
 class PersonInline(admin.StackedInline):
-    exclude = ('side',)
     model = Person
     show_change_link = True
 
@@ -34,7 +32,6 @@ class PersonInline(admin.StackedInline):
 
 
 class GroupInline(admin.StackedInline):
-    exclude = ('side',)
     model = Group
     show_change_link = True
 
@@ -49,13 +46,13 @@ class GroupInline(admin.StackedInline):
 
 
 @admin.register(Event)
-class EventAdmin(FilterUserAdmin):
+class EventAdmin(admin.ModelAdmin):
     fields = ('name', 'date', 'venue', 'location')
     inlines = (InvitationsInline2,)
 
 
 @admin.register(Family)
-class FamilyAdmin(FilterUserAdmin):
+class FamilyAdmin(admin.ModelAdmin):
     fields = ('name',)
     inlines = (GroupInline,)
     list_display = ('name',)
@@ -64,7 +61,7 @@ class FamilyAdmin(FilterUserAdmin):
 
 
 @admin.register(Group)
-class GroupAdmin(FilterUserAdmin):
+class GroupAdmin(admin.ModelAdmin):
     fields = ('family', 'alias',)
     inlines = (PersonInline,)
     list_display = ('family', 'alias')
@@ -74,15 +71,30 @@ class GroupAdmin(FilterUserAdmin):
     search_fields = ('alias',)
 
 
+@admin.action(description='Invites sent')
+def invites_sent(modeladmin, request, queryset):
+    queryset.update(sent=True)
+
+
+@admin.action(description='Mark as not Sent')
+def invites_unsent(modeladmin, request, queryset):
+    queryset.update(sent=False)
+
+
 @admin.register(Person)
-class PersonAdmin(FilterUserAdmin):
-    fields = ('title', 'name', 'senior', 'group', 'phone', 'sender',)
+class PersonAdmin(admin.ModelAdmin):
+    fields = ('sent', 'title', 'name', 'senior', 'group', 'phone', 'sender',)
     inlines = (InvitationsInline,)
-    list_display = ('name', 'group',)
-    list_filter = ('group',)
-    sortable_by = ('name', 'group')
+    list_display = ('title', 'name', 'senior', 'group', 'family_id', 'phone', 'sent',)
+    list_filter = ('sender', 'sent',)
+    sortable_by = ('name', 'group',)
     autocomplete_fields = ('group',)
     search_fields = ('name', 'phone',)
+    actions = (invites_sent,)
+
+    @admin.display
+    def family_id(self, obj):
+        return obj.group.family.id
 
 
 admin.site.site_header = 'DigiKankotri Admin'

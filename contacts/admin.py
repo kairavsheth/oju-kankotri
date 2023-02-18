@@ -7,13 +7,11 @@ from django.shortcuts import redirect, render
 from django.urls import path
 from django.utils.safestring import mark_safe
 
-from Kankotri.utils import FilterUserAdmin
 from contacts.models import Contact, Sender, User
 from guests.models import Person
 
 
 class PersonInline(admin.TabularInline):
-    exclude = ('side',)
     fields = ('title', 'senior', 'name', 'group', 'phone',)
     model = Person
     show_change_link = True
@@ -39,14 +37,8 @@ class SenderAdmin(FilterUserAdmin):
     inlines = (PersonInline,)
 
 
-def ImportForm(issuperuser):
-    class F(forms.Form):
-        file = fields.FileField()
-
-    class F2(F):
-        side = fields.ChoiceField(choices=((i.id, i.username) for i in User.objects.all()))
-
-    return F2() if issuperuser else F()
+class ImportForm(forms.Form):
+    file = fields.FileField()
 
 
 @admin.register(Contact)
@@ -85,13 +77,12 @@ class ContactAdmin(FilterUserAdmin):
                         phone = ''.join(i for i in vo.contents['tel'][0].value if i.isnumeric()).lstrip('0')
                         if len(phone) == 10:
                             phone = '91' + phone
-                        Contact(name=vo.contents['fn'][0].value, phone=phone,
-                                side_id=request.POST['side'] if request.user.is_superuser else request.user.id).save()
+                        Contact(name=vo.contents['fn'][0].value, phone=phone).save()
                     vo = next(vc, None)
 
             self.message_user(request, "Your file has been imported")
             return redirect("..")
-        form = ImportForm(request.user.is_superuser)
+        form = ImportForm()
         payload = {"form": form}
         return render(
             request, "admin/import_form.html", payload

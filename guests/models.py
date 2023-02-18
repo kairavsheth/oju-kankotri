@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Event(models.Model):
-    side = models.ForeignKey('contacts.User', on_delete=models.CASCADE)
     name = models.CharField(max_length=32)
     date = models.DateTimeField()
     venue = models.CharField(max_length=256)
@@ -13,7 +12,6 @@ class Event(models.Model):
 
 
 class Family(models.Model):
-    side = models.ForeignKey('contacts.User', on_delete=models.CASCADE)
     name = models.CharField(max_length=32)
 
     class Meta:
@@ -24,25 +22,25 @@ class Family(models.Model):
 
 
 class Group(models.Model):
-    side = models.ForeignKey('contacts.User', on_delete=models.CASCADE)
     alias = models.CharField(max_length=16)
-    family = models.ForeignKey(Family, on_delete=models.CASCADE)
+    family = models.ForeignKey(Family, related_name='groups', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.alias + ' - ' + self.family.name
 
-
 class Person(models.Model):
-    side = models.ForeignKey('contacts.User', on_delete=models.CASCADE)
     title = models.IntegerField(choices=((0, ''), (1, 'Mr.'), (2, 'Mrs.'), (3, 'Family')))
     senior = models.BooleanField('Senior for Shri/Smt')
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='persons')
     name = models.CharField(max_length=128)
     phone = models.BigIntegerField(null=True, blank=True)
     sender = models.ForeignKey('contacts.Sender', on_delete=models.CASCADE)
+    sent = models.BooleanField()
 
     def __str__(self):
-        return self.name
+        title = {1: 'Shri ', 2: 'Smt. '}.get(self.title, '') if self.senior else \
+            ['', 'Mr. ', 'Mrs. ', '(&) Family Member - '][self.title]
+        return title + self.name
 
 
 class Invitation(models.Model):
@@ -51,7 +49,7 @@ class Invitation(models.Model):
     expected = models.BooleanField()
 
     def __str__(self):
-        return ''
+        return self.person.name + ' - ' + self.event.name
 
     class Meta:
         unique_together = ['person', 'event']

@@ -1,0 +1,715 @@
+body, div, p {
+  margin: 0;
+  padding: 0;
+  font-family: "Merienda", cursive;
+}
+
+body {
+  background: #fff;
+}
+body .map-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+body .map-link img {
+  max-width: 1.5%;
+  margin-right: 8px;
+}
+@media screen and (max-width: 480px) {
+  body .map-link img {
+    max-width: 5%;
+  }
+}
+
+.language {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 99;
+  font-size: 12px;
+  background: #9c2031;
+  border: 0px;
+  padding: 5px 15px;
+  border-radius: 30px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.go {
+  width: 25px;
+  stroke: #636363;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  z-index: 12;
+}
+
+.go-prev, .go-next {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 5px;
+}
+
+.go-next {
+  left: calc(100% - 32px);
+}
+
+h1 {
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  font-weight: 800;
+  font-size: clamp(1rem, 5vw, 3rem);
+  margin: 0;
+}
+
+.bold, strong {
+  font-weight: 800;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+#slide02, #slide03 {
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, RGB(174, 228, 252), RGB(174, 228, 252)), linear-gradient(to right, RGB(160, 205, 99), RGB(160, 205, 99));
+  background-position: 0 0px, 0 650px;
+  background-size: 100% 650px, 100% 700px;
+}
+
+#slide04 {
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, RGB(26, 67, 104), RGB(26, 67, 104)), linear-gradient(to right, RGB(126, 96, 1), RGB(126, 96, 1));
+  background-position: 0 0px, 0 650px;
+  background-size: 100% 650px, 100% 700px;
+}
+
+#linebylineZeroE {
+  position: relative !important;
+  top: 2rem !important;
+}
+@media screen and (max-width: 480px) {
+  #linebylineZeroE {
+    top: 1rem !important;
+  }
+}
+
+#linebylineZeroF {
+  margin-top: 4rem;
+}
+@media screen and (max-width: 480px) {
+  #linebylineZeroF {
+    margin-top: 2rem;
+  }
+}
+
+#slide02 h2#linebyline {
+  font-weight: 800;
+}
+
+#slide02 h2#linebylineOne {
+  margin-top: 1em;
+}
+
+#address, #address2, #address3 {
+  bottom: 8%;
+  position: absolute;
+  width: 100%;
+}
+
+#slide02 h1, #slide03 h1, #slide04 h1 {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  font-weight: 800;
+  font-size: 2rem;
+  margin: 0;
+  color: #9d2031;
+}
+@media screen and (max-width: 480px) {
+  #slide02 h1, #slide03 h1, #slide04 h1 {
+    font-size: 1rem;
+  }
+}
+
+#bride {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 60vh;
+}
+
+#slide02 h2 {
+  margin: 7em 0 0;
+  color: #9d2031;
+}
+nav {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: inherit;
+  z-index: 100;
+  visibility: hidden;
+  display: none;
+}
+@media screen and (max-width: 480px) {
+  nav {
+    display: block;
+  }
+}
+
+.navDot {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  opacity: 0.5;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  margin-right: 20px;
+  float: left;
+  cursor: pointer;
+}
+
+.navDot:last-of-type {
+  margin-right: 0px;
+}
+
+.navDot:hover {
+  background-color: green;
+  border: 1px solid black;
+}
+
+.shreeGanesh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1% 0 1%;
+  color: #9d2031;
+}
+@media screen and (max-width: 480px) {
+  .shreeGanesh {
+    flex-direction: column;
+    font-size: 0.6rem;
+    margin-bottom: 30px;
+    align-items: center;
+    margin: 10% 0 3%;
+  }
+}
+.shreeGanesh .ganesh {
+  width: 5%;
+  margin: 0 20px;
+}
+@media screen and (max-width: 480px) {
+  .shreeGanesh .ganesh {
+    width: 8%;
+    margin: 10px 0 0px;
+  }
+}
+.shreeGanesh .godName {
+  display: block;
+}
+@media screen and (max-width: 480px) {
+  .shreeGanesh .godName {
+    display: none;
+  }
+}
+
+.logo {
+  position: absolute;
+  max-width: 10%;
+  top: 30%;
+  text-align: center;
+  margin: 0 auto;
+  left: 0;
+  right: 0px;
+}
+@media screen and (max-width: 480px) {
+  .logo {
+    max-width: 120px;
+    text-align: center;
+    margin: 0 auto;
+    top: 51%;
+    left: 0;
+    right: 0;
+  }
+}
+
+.slides-container {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.slide {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+#slide01 {
+  background: url(images/old-paper.png) center center;
+  background-size: cover;
+}
+
+#slide01 h1 {
+  font-size: 3rem;
+  top: 50%;
+}
+@media screen and (max-width: 480px) {
+  #slide01 h1 {
+    font-size: 1.5rem;
+    top: 50%;
+  }
+}
+
+#slide02 .wrap {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  text-align: center;
+  height: 100px;
+  overflow: hidden;
+}
+
+#slide03.lines {
+  font-weight: 800;
+  font-size: clamp(0.5rem, 1.5vw, 3rem);
+  line-height: 1.5em;
+  margin: 0;
+  color: #9d2031;
+}
+
+#linebylineThree {
+  position: absolute;
+  margin: 0em 0 0;
+  color: #9d2031;
+  top: 7em;
+  left: 0;
+  right: 0;
+}
+@media screen and (max-width: 480px) {
+  #linebylineThree {
+    font-size: 1rem;
+    top: 8em;
+  }
+}
+
+#linebylineFour, #linebylineZeroE {
+  position: absolute;
+  margin: 0em 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 8em;
+  left: 0;
+  right: 0;
+  font-weight: 800;
+  font-size: clamp(0.5rem, 1.5vw, 3rem);
+  color: #9d2031;
+}
+@media screen and (max-width: 480px) {
+  #linebylineFour, #linebylineZeroE {
+    flex-direction: column;
+    font-size: 1rem;
+    top: 12em;
+  }
+}
+
+#linebylineFive, #linebylineFourA, #linebylineFourB {
+  position: absolute;
+  top: 7em;
+  font-weight: 400;
+  color: #9d2031;
+  left: 0;
+  right: 0;
+}
+@media screen and (max-width: 480px) {
+  #linebylineFive, #linebylineFourA, #linebylineFourB {
+    font-size: 0.9rem;
+    top: 14em;
+  }
+}
+
+#linebylineFourA {
+  top: 8em;
+}
+
+.with {
+  margin: 1rem 0rem;
+  color: #9d2031;
+}
+@media screen and (max-width: 480px) {
+  .with {
+    margin: 1rem 0rem;
+  }
+}
+
+.names {
+  font-size: 28.8px;
+}
+
+.DoSO {
+  display: block;
+  font-size: 0.5em;
+  font-weight: 200;
+  line-height: 1.8em;
+}
+@media screen and (max-width: 480px) {
+  .DoSO small {
+    display: block;
+  }
+}
+
+big {
+  font-size: 1.5em;
+}
+
+.decorative01 {
+  position: absolute;
+  top: 85%;
+  left: 35%;
+  width: 30vh;
+}
+
+.decorative02 {
+  position: absolute;
+  top: 90%;
+  left: 45%;
+  width: 17vh;
+}
+
+#giftsThali {
+  position: absolute;
+  top: 85%;
+  left: 70%;
+  width: 45vh;
+}
+
+.absolute {
+  position: absolute;
+}
+
+#curtainLeft {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+}
+
+#curtainRight {
+  position: absolute;
+  top: 0%;
+  left: 100%;
+  width: 100%;
+}
+
+#bgGrayOverlayZero, #bgGrayOverlay, #bgGrayOverlayTwo, #bgGrayOverlayThree, #bgGrayOverlayFour {
+  background: rgba(255, 255, 255, 0.85);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0;
+}
+
+h2.lines .slideTitle {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#stage {
+  background: url(images/stage.svg) top center no-repeat;
+  height: 100vh;
+}
+
+.orangeTop {
+  /* position: relative; */
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.pillar.one {
+  width: 9.8%;
+  left: 16.5%;
+  position: absolute;
+  top: 35.7%;
+}
+
+.pillar.two {
+  width: 6.2%;
+  left: 24.3%;
+  position: absolute;
+  top: 39.7%;
+}
+
+.pillar.three {
+  width: 6.2%;
+  left: 70.1%;
+  position: absolute;
+  top: 40%;
+}
+
+.pillar.four {
+  width: 9.7%;
+  left: 74.1%;
+  position: absolute;
+  top: 36%;
+}
+
+/* scene 03 css */
+#matkaOne {
+  position: absolute;
+  top: 86%;
+  left: 34%;
+  width: 7vh;
+}
+@media screen and (max-width: 480px) {
+  #matkaOne {
+    top: 83%;
+    left: 10%;
+    width: 8vh;
+  }
+}
+
+#matkaTwo {
+  position: absolute;
+  top: 68%;
+  left: 38%;
+  width: 5vh;
+}
+@media screen and (max-width: 480px) {
+  #matkaTwo {
+    width: 4vh;
+    top: 72%;
+    left: 22%;
+  }
+}
+
+#matkaThree {
+  position: absolute;
+  top: 68%;
+  left: 63%;
+  width: 5vh;
+}
+@media screen and (max-width: 480px) {
+  #matkaThree {
+    width: 4vh;
+    top: 72%;
+    left: 78%;
+  }
+}
+
+#matkaFour {
+  position: absolute;
+  top: 86%;
+  left: 67%;
+  width: 7vh;
+}
+@media screen and (max-width: 480px) {
+  #matkaFour {
+    top: 83%;
+    left: 90%;
+    width: 8vh;
+  }
+}
+
+#agni {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  width: 20vh;
+}
+
+#couple {
+  position: absolute;
+  top: 67%;
+  left: 50%;
+  width: 25vh;
+}
+
+#curtains {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 84vh;
+}
+@media screen and (max-width: 480px) {
+  #curtains {
+    top: 50%;
+  }
+}
+
+#couple1 {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  width: 35vh;
+}
+@media screen and (max-width: 480px) {
+  #couple1 {
+    width: 30vh;
+    top: 64%;
+  }
+}
+
+#stageCircle {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  width: 50vh;
+}
+@media screen and (max-width: 480px) {
+  #stageCircle {
+    top: 90%;
+  }
+}
+
+.left-stars {
+  width: 100%;
+  height: 560px;
+  background: url(images/stars.gif) left top repeat;
+  background-size: 15%;
+}
+@media screen and (max-width: 480px) {
+  .left-stars {
+    background-size: 70%;
+  }
+}
+
+.lines {
+  font-size: 1.4em;
+  font-weight: 400;
+  line-height: 1.6em;
+  color: #9d2031;
+  margin: 10px 0;
+}
+@media screen and (max-width: 480px) {
+  .lines {
+    font-size: 1rem;
+    line-height: 1.5em;
+    margin: 5px 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.d-mob {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .d-mob {
+    display: block !important;
+  }
+  #slide02 h2 {
+    margin-top: 8rem;
+  }
+  #bride {
+    top: 50%;
+    width: 30vh;
+  }
+  #giftsThali {
+    width: 25vh;
+    top: auto;
+    bottom: 5%;
+  }
+  #floralPots {
+    width: 20vh;
+    bottom: -3%;
+    top: auto;
+    left: 20%;
+  }
+  #mandapmuhratpot {
+    width: 10vh;
+    top: auto;
+    bottom: 0%;
+    left: 49%;
+  }
+  #stage {
+    background: url(images/slide2-top.svg) top center no-repeat;
+    background-size: 250%;
+  }
+  .phereWrapper {
+    height: 100vh;
+  }
+  .names {
+    font-size: 1.6rem;
+  }
+  #agni {
+    top: 88%;
+  }
+}
+.notFound {
+  background: url(images/old-paper.png) center center no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 480px) {
+  .notFound {
+    padding: 0 20px;
+  }
+}
+.notFound .txt-404 {
+  text-align: center;
+  color: #9d2031;
+}
+.notFound .txt-404 img {
+  max-width: 20%;
+}
+@media screen and (max-width: 480px) {
+  .notFound .txt-404 img {
+    max-width: 30%;
+  }
+}
+.notFound .txt-404 h2 {
+  font-size: 35px;
+  line-height: 60px;
+  margin: 10px auto;
+}
+@media screen and (max-width: 480px) {
+  .notFound .txt-404 h2 {
+    font-size: 28px;
+    line-height: 30px;
+  }
+}
+.notFound .txt-404 p {
+  line-height: normal;
+  margin: 0 auto 15px 0;
+}
+.notFound .txt-404 .btn {
+  display: inline-block;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  line-height: 1em;
+  margin: 0;
+  padding: 12px 40px;
+  border-radius: 40px;
+  background: #9d2031;
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=styles.css.map */
